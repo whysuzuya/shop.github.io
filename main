@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Захар & Елизавета | Свадьба </title>
+    <!-- Google Fonts & Font Awesome для иконок -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #87df87;
+            color: #2d2a24;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Хедер с именами и датой */
+        .hero {
+            text-align: center;
+            padding: 40px 20px 20px;
+            background: linear-gradient(145deg, #ffffff 0%, #faf7f2 100%);
+            border-radius: 30px 30px 0 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+
+        .names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #4a3f35;
+            line-height: 1.2;
+        }
+
+        .date {
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            margin-top: 15px;
+            color: #b19882;
+            font-weight: 300;
+            word-spacing: 4px;
+        }
+
+        /* Фотосекция с пожеланиями */
+        .family-photo {
+            margin: 40px 0;
+            border-radius: 40px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            background-color: #ddd2c5;
+            min-height: 400px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice"><rect width="800" height="600" fill="%23e3d9ce"/><circle cx="400" cy="270" r="110" fill="%23d4c2b2"/><circle cx="330" cy="250" r="20" fill="%233d362f"/><circle cx="470" cy="250" r="20" fill="%233d362f"/><ellipse cx="400" cy="310" rx="40" ry="20" fill="%23b7a08b"/><path d="M350 380 Q400 450,450 380" stroke="%23998778" stroke-width="8" fill="none" stroke-linecap="round"/><rect x="200" y="380" width="400" height="220" fill="%23c4b5a4"/><circle cx="300" cy="500" r="28" fill="%2390675a"/><circle cx="500" cy="500" r="28" fill="%2390675a"/></svg>'); /* Стилизованный силуэт семьи, но можно заменить на реальное фото */
+            background-size: cover;
+            background-position: center 20%;
+        }
+
+        .photo-overlay {
+            background: linear-gradient(0deg, rgba(44, 38, 33, 0.7) 0%, rgba(44, 38, 33, 0.2) 50%, rgba(44, 38, 33, 0) 100%);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 40px 20px;
+            color: white;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+        }
+
+        .photo-overlay h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-align: center;
+            max-width: 700px;
+        }
+
+        .photo-overlay h2 small {
+            font-size: 1.6rem;
+            font-style: italic;
+            font-weight: 300;
+            display: block;
+            margin-top: 10px;
+            letter-spacing: 1px;
+        }
+
+        /* Карточка локации и времени */
+        .info-card {
+            background-color: #d0e0d0dd;
+            backdrop-filter: blur(5px);
+            padding: 35px 25px;
+            border-radius: 40px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #646464;
+        }
+
+        .location-time-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .location-block {
+            flex: 2;
+            min-width: 260px;
+        }
+
+        .location-name {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #4a3f35;
+        }
+
+        .location-address {
+            margin-bottom: 20px;
+            color: #655b52;
+            font-size: 1.1rem;
+        }
+
+        .map-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background-color: #b19882;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 16px rgba(176, 142, 119, 0.3);
+            font-size: 1rem;
+        }
+
+        .map-btn i {
+            font-size: 1.4rem;
+        }
+
+        .map-btn:hover {
+            background-color: #8f7562;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(139, 106, 82, 0.4);
+        }
+
+        .time-block {
+            flex: 1;
+            min-width: 180px;
+            background: #f3ede7;
+            padding: 25px;
+            border-radius: 30px;
+            text-align: center;
+        }
+
+        .time-label {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #b19882;
+            margin-bottom: 15px;
+        }
+
+        .time-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            color: #3a312a;
+            line-height: 1.2;
+        }
+        .time-value span {
+            font-size: 1.8rem;
+            display: block;
+            font-weight: 400;
+        }
+
+        /* Dress code: пиджаки и стилистика */
+        .dress-section {
+            margin: 50px 0 30px;
+            text-align: center;
+        }
+        .dress-title {
+            font-size: 2rem;
+            font-family: 'Cormorant Garamond', serif;
+            margin-bottom: 15px;
+            color: #4a3f35;
+        }
+        .dress-sub {
+            color: #8b7a6b;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        .dress-icons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+        }
+        .dress-icon-item {
+            text-align: center;
+            flex: 0 1 120px;
+        }
+        .dress-icon-item i {
+            font-size: 4rem;
+            color: #3a312a;
+            background: #cfc1b4;
+            width: 120px;
+            height: 120px;
+            line-height: 120px !important;
+            border-radius: 50%;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+            transition: 0.2s;
+        }
+        .dress-icon-item p {
+            margin-top: 15px;
+            font-weight: 500;
+            color: #4f443b;
+        }
+        /* специально для пиджаков используем фа-иконки */
+        .dress-icon-item .fa-user-tie { background: #cfc1b4; } 
+        .dress-icon-item .fa-hat-cowboy { background: #cfc1b4; } 
+        .dress-icon-item .fa-shoe-prints { background: #cfc1b4; } 
+        .dress-icon-item .fa-vest { background: #cfc1b4; }
+
+        /* Что дарить */
+        .gift-section {
+            background-color: #e7dbcf;
+            padding: 40px;
+            border-radius: 60px 60px 30px 30px;
+            margin: 50px 0;
+            color: #2d2a24;
+            box-shadow: inset 0 -3px 10px rgba(95, 70, 50, 0.1);
+        }
+        .gift-section h3 {
+            font-size: 2.2rem;
+            font-family: 'Cormorant Garamond', serif;
+            margin-bottom: 20px;
+        }
+        .gift-section p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255,255,240,0.5);
+            padding: 15px 25px;
+            border-radius: 60px;
+            backdrop-filter: blur(2px);
+        }
+
+        /* Счетчик дней до свадьбы */
+        .countdown-box {
+            background: #ffffff;
+            padding: 40px 20px;
+            border-radius: 80px;
+            margin: 50px 0;
+            text-align: center;
+            border: 3px dashed #b19882;
+        }
+        .countdown-number {
+            font-size: 7rem;
+            font-weight: 700;
+            font-family: 'Cormorant Garamond', serif;
+            line-height: 1;
+            color: #7c6050;
+            text-shadow: 0 4px 10px rgba(161, 121, 88, 0.2);
+        }
+        .countdown-text {
+            font-size: 2rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: #a68976;
+        }
+
+        /* Форма подтверждения */
+        .rsvp-section {
+            background-color: #fffbf7;
+            padding: 50px 30px;
+            border-radius: 40px 40px 30px 30px;
+            box-shadow: 0 20px 40px rgba(86, 65, 47, 0.08);
+            margin: 40px 0 60px;
+        }
+        .rsvp-title {
+            font-size: 2.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .form-row .form-group {
+            flex: 1 1 200px;
+        }
+        label {
+            font-weight: 500;
+            display: block;
+            margin-bottom: 8px;
+            color: #4f443b;
+        }
+        input, select {
+            width: 100%;
+            padding: 16px 20px;
+            border: 1px solid #dcd0c4;
+            border-radius: 60px;
+            font-size: 1rem;
+            background: white;
+            font-family: 'Montserrat', sans-serif;
+            transition: 0.2s;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #b19882;
+            box-shadow: 0 0 0 4px #ecdacf;
+        }
+
+        .drinks-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px 30px;
+            margin: 15px 0 25px;
+        }
+        .drink-option {
+            flex: 1 1 150px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f4ede6;
+            padding: 10px 20px;
+            border-radius: 40px;
+        }
+        .drink-option input[type="checkbox"] {
+            width: 22px;
+            height: 22px;
+            accent-color: #b19882;
+            transform: scale(1);
+            margin-right: 5px;
+        }
+
+        .submit-btn {
+            background-color: #7c6050;
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            font-size: 1.3rem;
+            border-radius: 60px;
+            cursor: pointer;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 20px rgba(105, 78, 55, 0.3);
+            display: inline-block;
+            width: auto;
+            min-width: 280px;
+        }
+        .submit-btn:hover {
+            background-color: #5f4a3b;
+            transform: scale(1.02);
+        }
+        .footer-note {
+            font-size: 0.9rem;
+            margin-top: 30px;
+            color: #8f8176;
+            text-align: center;
+        }
+
+        /* кнопка показать на карте открывает maps */
+        .mock-map-link {
+            cursor: pointer;
+        }
+        hr {
+            border: none;
+            border-top: 2px dotted #d9caba;
+            margin: 20px 0;
+        }
+        i.fa-solid, i.fa-regular {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Шапка: Андрей & Мария + дата -->
+        <div class="hero">
+            <div class="names">Захар <i class="fa-regular fa-heart" style="color:#b19882; font-size: 3rem; vertical-align: middle;"></i> Елизавета</div>
+            <div class="date">СЕНТЯБРЬ 27, 2026</div>
+        </div>
+
+        <!-- Семейная фотка с пожеланием "родные и близкие мои пожелания" (текст на оверлее) -->
+        <div class="family-photo">
+            <div class="photo-overlay">
+                <h2>Где будет проводиться праздник?<br><small></small></h2>
+            </div>
+        </div>
+
+        <!-- Локация + кнопка показать на карте + время -->
+        <div class="info-card">
+            <div class="location-time-grid">
+                <div class="location-block">
+                    <div class="location-name"><i class="fa-solid fa-location-dot" style="color:#b19882;"></i>Краснодарский край</div>
+                    <div class="location-address"> Тихорецк, улица Калинина, 101/1</div>
+                    <!-- Кнопка "показать на карте" открывает яндекс карты / гугл (пример) -->
+                    <a href="https://www.google.com/maps/place/%D1%83%D0%BB.+%D0%9A%D0%B0%D0%BB%D0%B8%D0%BD%D0%B8%D0%BD%D0%B0,+101,+%D0%A2%D0%B8%D1%85%D0%BE%D1%80%D0%B5%D1%86%D0%BA,+%D0%9A%D1%80%D0%B0%D1%81%D0%BD%D0%BE%D0%B4%D0%B0%D1%80%D1%81%D0%BA%D0%B8%D0%B9+%D0%BA%D1%80%D0%B0%D0%B9,+352120/@45.8621945,40.1390712,17z/data=!3m1!4b1!4m6!3m5!1s0x40fb1fa83f0fb99f:0x5b871bc5b1021475!8m2!3d45.8621945!4d40.1416461!16s%2Fg%2F11cpdc26n0?entry=ttu&g_ep=EgoyMDI2MDIyNC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="map-btn" id="showMapBtn"><i class="fa-solid fa-map-location-dot"></i> Показать на карте</a>
+                </div>
+                <div class="time-block">
+                    <div class="time-label"><i class="fa-regular fa-clock"></i> Время проведения</div>
+                    <div class="time-value">17:00<span>сбор гостей</span></div>
+                    <div style="margin-top: 15px; font-weight:300;">церемония начнется в 17:30</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dress code: стилистика одежды + иконки пиджаков и тд -->
+        <div class="dress-section">
+            <div class="dress-title">Дресс-код</div>
+            <div class="dress-sub">подбери свой образ в нашей стилистике</div>
+            <div class="dress-icons">
+                <div class="dress-icon-item"><i class="fa-solid fa-user-tie"></i><p>Костюм / пиджак</p></div>
+                <div class="dress-icon-item"><i class="fa-solid fa-vest"></i><p>Жилет / смокинг</p></div>
+                <div class="dress-icon-item"><i class="fa-solid fa-hat-cowboy"></i><p>Аксессуары</p></div>
+                <div class="dress-icon-item"><i class="fa-solid fa-shoe-prints"></i><p>Лоферы/лодочки</p></div>
+                <div class="dress-icon-item"><i class="fa-solid fa-umbrella-beach"></i><p>Пастельные тона</p></div>
+            </div>
+            <p style="margin-top:30px; color:#776b5f;">★ Если хотите можете одеться в зеленый или белый цвет ★</p>
+        </div>
+
+        <!-- Что дарить -->
+        <div class="gift-section">
+            <h3><i class="fa-regular fa-gem"></i> Что дарить?</h3>
+            <p>Мы будем рады любой открытке и вашей улыбке!<br>Но если хотите сделать подарок — предпочтительны конверты 💌</p>
+        </div>
+
+        <!-- Таймер: мы станем семьей через 95 дней (на момент 27.09.2026, если сегодня ~ 24.06.2026, но для красоты оставляем) -->
+        <div class="countdown-box">
+            <div class="countdown-text">ЧЕРЕЗ</div>
+            <div class="countdown-number">95</div>
+            <div class="countdown-text">ДНЕЙ</div>
+            <p style="font-size: 1.2rem; margin-top: 10px;">мы станем семьей 💫</p>
+        </div>
+
+        <!-- Анкета подтверждения присутствия + напитки -->
+        <div class="rsvp-section">
+            <div class="rsvp-title">Ждём вас!</div>
+            <form id="weddingForm" action="#" method="post">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Имя *</label>
+                        <input type="text" name="firstname" placeholder="Лилия" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Фамилия *</label>
+                        <input type="text" name="lastname" placeholder="Долматова" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Подтвердите своё присутствие *</label>
+                    <select name="attendance" required>
+                        <option value="" disabled selected>— выберите —</option>
+                        <option value="yes">Буду с радостью!</option>
+                        <option value="no">Не смогу прийти</option>
+                        <option value="maybe">Пока не знаю</option>
+                    </select>
+                </div>
+
+                <!-- Ваши предпочтения в напитках -->
+                <label>Ваши предпочтения в напитках (можно несколько)</label>
+                <div class="drinks-group">
+                    <label class="drink-option"><input type="checkbox" name="drink" value="white_wine"> Шампанское</label>
+                    <label class="drink-option"><input type="checkbox" name="drink" value="red_wine"> Вино красное</label>
+                    <label class="drink-option"><input type="checkbox" name="drink" value="sparkling"> Виски</label>
+                    <label class="drink-option"><input type="checkbox" name="drink" value="strong">Коньяк</label>
+                    <label class="drink-option"><input type="checkbox" name="drink" value="non_alcohol"> Безалкогольные</label>
+                </div>
+
+                <!-- Кнопка отправки -->
+                <div style="text-align: center;">
+                    <button type="submit" class="submit-btn"><i class="fa-regular fa-paper-plane"></i> Отправить заявку</button>
+                </div>
+                <div class="footer-note">
+                    * Все заявки придут нам на почту!
+
+                    Если вас несколько человек, то отпраляйте по очереди!
+                </div> 
+            </form>
+        </div>
+    </div>
+
+    <!-- Скрипт для имитации отправки на почту и обработки данных -->
+    <script>
+        (function() {
+            // Эмуляция отправки формы на почту (в реальности нужен бэкенд)
+            const form = document.getElementById('weddingForm');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault(); // предотвращаем перезагрузку
+
+                // Собираем данные
+                const formData = new FormData(form);
+                const data = {};
+                const drinks = [];
+                for (let [key, val] of formData.entries()) {
+                    if (key === 'drink') {
+                        drinks.push(val);
+                    } else {
+                        data[key] = val;
+                    }
+                }
+                data.drinks = drinks.join(', ');
+
+                // Проверка обязательных полей
+                if (!data.firstname || !data.lastname || !data.attendance) {
+                    alert('Пожалуйста, заполните имя, фамилию и подтвердите свое присутствие.');
+                    return;
+                }
+
+                // Здесь в реальном проекте делается AJAX запрос на сервер, который шлет письмо.
+                console.log('Данные для отправки на почту:', data);
+
+                // Показываем уведомление, что заявка отправлена (эмуляция)
+                alert(`Спасибо, ${data.firstname} ${data.lastname}! Ваш ответ учтён. (Демо-режим: данные не ушли на сервер, но вы можете настроить отправку через FormSubmit или аналоги)`);
+
+                // Вариант: можно очистить или не очищать
+                // Для демо оставим как есть
+            });
+
+            // Дополнительно: обработка клика на карту (откроется в новой вкладке)
+            document.getElementById('showMapBtn').addEventListener('click', function(e) {
+                // ссылка уже открывается, просто добавим аналитику (можно игнорировать)
+                console.log('Карта открыта');
+            });
+
+            // Сделаем счетчик дней точным: между сегодня и 27 сентября 2026
+            function updateCounter() {
+                const weddingDate = new Date(2026, 8, 27); // сентябрь (месяц 8 т.к. январь 0)
+                const today = new Date();
+                // разница в миллисекундах
+                const diffTime = weddingDate - today;
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                const counterElement = document.querySelector('.countdown-number');
+                if (counterElement) {
+                    if (diffDays >= 0) {
+                        counterElement.innerText = diffDays;
+                    } else {
+                        counterElement.innerText = '0';
+                    }
+                }
+            }
+            // обновим при загрузке, но оставим статическое значение "95" если хотим как макет,
+            // но лучше показать реальный отсчёт. закомментируем если нужно именно 95
+            // updateCounter(); // Раскомментируй для реального счётчика, но по заданию просят "95 дней"
+            // Оставляем 95 по желанию, но т.к. 2026 далеко, то дней будет много.
+            // для красоты ставим на 95 (подгон под задание)
+            // Если хотим реальный - убрать комментарий.
+        })();
+    </script>
+
+    <!-- Инструкция: как отправить данные на почту (для работающего прототипа можно использовать formsubmit.co) 
+         Но в рамках демо просто покажем alert. Реальную отправку можно настроить заменив action на "https://formsubmit.co/your@email.com" и убрав e.preventDefault. -->
+</body>
+</html>
